@@ -1,3 +1,0 @@
-Item
-Resource
-HealingItem
