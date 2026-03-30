@@ -34,18 +34,20 @@ func set_health(new_health: int) -> void:
 	if health == 0:
 		die()
 	
-func _ready() -> void:
-	weapon_anchor.add_child(base_weapon)
-	current_weapon = base_weapon
-	
+func _ready() -> void:	
 	health_bar.max_value = max_health
 	health_bar.value = health
+	
+	weapon_anchor.add_child(base_weapon)
+	current_weapon = base_weapon
 	
 	_weapon_timer = Timer.new()
 	_weapon_timer.one_shot = true
 	_weapon_timer.wait_time = 5.0
 	_weapon_timer.timeout.connect(func() -> void: reset_weapon())
 	add_child(_weapon_timer)
+	
+	
 	
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -57,7 +59,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
 	move_and_slide()
-#
+	
 func change_weapon(weapon_scene: PackedScene, hand_texture: Texture) -> void:
 		if current_weapon != null:
 			current_weapon.queue_free()
