@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://grkbtkeyvpa0"]
+
+[ext_resource type="Texture2D" uid="uid://dvjpow1ete6qb" path="res://npc/sophia.png" id="1_mm37f"]
+[ext_resource type="Script" uid="uid://d2ufmsmcp6a87" path="res://npc/npc.gd" id="1_x1gg0"]
+[ext_resource type="PackedScene" uid="uid://ey3lu1ppsuqj" path="res://npc/dialogue/dialogue_box.tscn" id="3_2mgmk"]
+[ext_resource type="PackedScene" uid="uid://5ays6kuo0xio" path="res://common/shadow.tscn" id="3_x1gg0"]
+[ext_resource type="Script" uid="uid://8m4p5ucgmg34" path="res://npc/dialogue/dialogue_entry.gd" id="4_a1oy0"]
+[ext_resource type="Texture2D" uid="uid://copkt78vgp37i" path="res://npc/dialogue/sophia.png" id="4_ml2qy"]
+[ext_resource type="Texture2D" uid="uid://d000xjtr4iqtk" path="res://npc/dialogue/emotion_regular.png" id="5_pahx2"]
+[ext_resource type="AudioStream" uid="uid://bm2mvov4dm0aw" path="res://npc/dialogue/talking_synth_alternate.ogg" id="8_ml2qy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vqtkm"]
+radius = 88.0
+height = 192.0
+
+[sub_resource type="Resource" id="Resource_x1gg0"]
+script = ExtResource("4_a1oy0")
+text = "Hey, slut. What's cracking?"
+metadata/_custom_type_script = "uid://8m4p5ucgmg34"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ml2qy"]
+size = Vector2(80, 94.5)
+
+[node name="NPC" type="Area2D" unique_id=230303253]
+script = ExtResource("1_x1gg0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=859196794]
+position = Vector2(0, 22.999998)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_mm37f")
+
+[node name="Shadow" parent="." unique_id=624195420 instance=ExtResource("3_x1gg0")]
+position = Vector2(0, 104)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1406130318]
+visible = false
+position = Vector2(0, 24)
+shape = SubResource("CapsuleShape2D_vqtkm")
+debug_color = Color(0, 0.8901961, 0.16470589, 0.41960785)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=905141043]
+
+[node name="DialogueBox" parent="CanvasLayer" unique_id=1178821251 instance=ExtResource("3_2mgmk")]
+unique_name_in_owner = true
+visible = false
+dialogue_items = Array[ExtResource("4_a1oy0")]([SubResource("Resource_x1gg0")])
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1858254352]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=118374599]
+position = Vector2(0, 64)
+shape = SubResource("RectangleShape2D_ml2qy")
