@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://djpfg1tyyqx7j"]
+
+[ext_resource type="PackedScene" uid="uid://grkbtkeyvpa0" path="res://npc/sophia.tscn" id="1_lkjt4"]
+[ext_resource type="PackedScene" uid="uid://43ku0c7m8gqa" path="res://player/player.tscn" id="2_ny0t1"]
+
+[node name="Test" type="Node2D" unique_id=1681335029]
+
+[node name="Sophia" parent="." unique_id=230303253 instance=ExtResource("1_lkjt4")]
+
+[node name="Player" parent="." unique_id=2080458370 instance=ExtResource("2_ny0t1")]
+position = Vector2(-368, 32)

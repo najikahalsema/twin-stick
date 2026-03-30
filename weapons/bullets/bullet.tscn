@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://d1cm7qj3w5xtl"]
+
+[ext_resource type="Script" uid="uid://c1r6h4a58r666" path="res://weapons/bullets/bullet.gd" id="1_7gn5l"]
+[ext_resource type="Texture2D" uid="uid://dxe2pniv6kdn4" path="res://weapons/bullets/fire_trail.png" id="2_ftu3o"]
+[ext_resource type="Texture2D" uid="uid://bgn8fvhkjniwn" path="res://weapons/bullets/fire.png" id="3_c6hop"]
+[ext_resource type="AudioStream" uid="uid://baatxna4415hc" path="res://weapons/bullets/hit_fire.wav" id="4_jta2x"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6j2x7"]
+radius = 13.0
+height = 26.0
+
+[node name="Bullet" type="Area2D" unique_id=1890758714]
+collision_mask = 3
+script = ExtResource("1_7gn5l")
+
+[node name="Trail" type="Sprite2D" parent="." unique_id=1827683884]
+unique_name_in_owner = true
+position = Vector2(-28, 0)
+texture = ExtResource("2_ftu3o")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1168856696]
+unique_name_in_owner = true
+texture = ExtResource("3_c6hop")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2036578138]
+shape = SubResource("CapsuleShape2D_6j2x7")
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="." unique_id=1325486434]
+unique_name_in_owner = true
+stream = ExtResource("4_jta2x")

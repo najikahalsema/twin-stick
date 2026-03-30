@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://cl66xq7w5ty8j"]
+
+[ext_resource type="Texture2D" uid="uid://c33mf20ohybyi" path="res://common/particles/white_circle.png" id="1_i064x"]
+[ext_resource type="Shader" uid="uid://dw5wfmtgj8k2m" path="res://common/particles/confettis/confettis.gdshader" id="2_sqdf8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i064x"]
+shader = ExtResource("2_sqdf8")
+
+[sub_resource type="Gradient" id="Gradient_sqdf8"]
+offsets = PackedFloat32Array(0, 0.15983605, 0.3, 0.5, 0.7, 0.85, 1)
+colors = PackedColorArray(1, 0.7411765, 0.8352941, 1, 0.9372549, 0.28235295, 0.3529412, 1, 0.9529412, 0.5411765, 0.34509805, 1, 0.9688074, 0.69702524, 0.16280457, 1, 0.6392157, 0.84705883, 0.5411765, 1, 0.60784316, 0.90588236, 0.8509804, 1, 0.47058824, 0.49803922, 1, 1)
+metadata/_snap_count = 60
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_30otj"]
+gradient = SubResource("Gradient_sqdf8")
+
+[sub_resource type="Curve" id="Curve_berag"]
+_data = [Vector2(0, 0.0043028593), 0.0, 0.0, 0, 0, Vector2(0.06375839, 1), 0.0, 0.0, 0, 0, Vector2(0.8288591, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_6s2yx"]
+curve = SubResource("Curve_berag")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6okog"]
+lifetime_randomness = 0.2
+particle_flag_align_y = true
+particle_flag_disable_z = true
+direction = Vector3(1, -1, 0)
+spread = 24.0
+initial_velocity_min = 250.0
+initial_velocity_max = 600.0
+gravity = Vector3(0, 400, 0)
+damping_min = 1.0
+damping_max = 1.0
+scale_min = 0.29999998
+scale_max = 0.59999996
+scale_curve = SubResource("CurveTexture_6s2yx")
+color_initial_ramp = SubResource("GradientTexture1D_30otj")
+anim_speed_min = 10.0
+anim_speed_max = 20.0
+anim_offset_max = 1.0
+
+[node name="ConfettiParticles" type="GPUParticles2D" unique_id=1542627454]
+material = SubResource("ShaderMaterial_i064x")
+rotation = -0.7238205
+emitting = false
+amount = 48
+texture = ExtResource("1_i064x")
+lifetime = 1.5
+one_shot = true
+preprocess = 0.56
+explosiveness = 0.9
+process_material = SubResource("ParticleProcessMaterial_6okog")

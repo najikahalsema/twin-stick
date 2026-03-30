@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://bwbp5wmsff5w8"]
+
+[ext_resource type="Script" uid="uid://d3g5pguedurvn" path="res://armed_mob.gd" id="1_xxnp5"]
+[ext_resource type="Texture2D" uid="uid://ijiitgilb4y2" path="res://mobs/shield_active.png" id="2_h6h47"]
+[ext_resource type="PackedScene" uid="uid://b3abm2h3yhvy4" path="res://weapons/mob_weapon.tscn" id="3_tuwy2"]
+[ext_resource type="AudioStream" uid="uid://dfc5tcrthtntk" path="res://mobs/hurt.wav" id="4_h6h47"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6n52p"]
+radius = 37.878544
+height = 98.020226
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xxnp5"]
+radius = 498.06424
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xxnp5"]
+radius = 34.0
+height = 90.0
+
+[sub_resource type="Animation" id="Animation_fgbma"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Avatar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Avatar:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Avatar:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_p7hwu"]
+resource_name = "damaged"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Avatar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.43333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1.04, 0, 0.201, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4p423"]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Avatar:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Avatar:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.44331363]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xxnp5"]
+_data = {
+&"RESET": SubResource("Animation_fgbma"),
+&"damaged": SubResource("Animation_p7hwu"),
+&"die": SubResource("Animation_4p423")
+}
+
+[node name="ArmedMob" type="CharacterBody2D" unique_id=2012583473]
+script = ExtResource("1_xxnp5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1160539773]
+rotation = -1.5931852
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CapsuleShape2D_6n52p")
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=44688518]
+unique_name_in_owner = true
+
+[node name="DetectionRadius" type="CollisionShape2D" parent="DetectionArea" unique_id=578792995]
+shape = SubResource("CircleShape2D_xxnp5")
+debug_color = Color(0.08134318, 0.5473374, 0.32350722, 0.41960785)
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=294993789]
+unique_name_in_owner = true
+
+[node name="HitboxCollisionShape" type="CollisionShape2D" parent="Hitbox" unique_id=2020011547]
+rotation = -1.5673138
+shape = SubResource("CapsuleShape2D_xxnp5")
+
+[node name="Avatar" type="Sprite2D" parent="." unique_id=1346198226]
+texture = ExtResource("2_h6h47")
+
+[node name="MobWeapon" parent="." unique_id=1872018855 instance=ExtResource("3_tuwy2")]
+unique_name_in_owner = true
+
+[node name="CooldownTimer" type="Timer" parent="." unique_id=1582721999]
+unique_name_in_owner = true
+autostart = true
+
+[node name="DamageTimer" type="Timer" parent="." unique_id=2073935512]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=267330165]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_xxnp5")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1496342158]
+unique_name_in_owner = true
+stream = ExtResource("4_h6h47")

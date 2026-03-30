@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b3abm2h3yhvy4"]
+
+[ext_resource type="AudioStream" uid="uid://8k3b4dtgtm7h" path="res://weapons/shoot_fire.wav" id="1_m8ufl"]
+[ext_resource type="Script" uid="uid://0y72prskuhxw" path="res://weapons/mob_weapon.gd" id="1_uibhk"]
+[ext_resource type="PackedScene" uid="uid://dmtj821av40ol" path="res://weapons/bullets/mob_bullet.tscn" id="2_phffx"]
+
+[node name="MobWeapon" type="Node2D" unique_id=1872018855 node_paths=PackedStringArray("shoot_sound")]
+script = ExtResource("1_uibhk")
+bullet_scene = ExtResource("2_phffx")
+shoot_sound = NodePath("ShootSound")
+
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="." unique_id=1183046599]
+unique_name_in_owner = true
+stream = ExtResource("1_m8ufl")

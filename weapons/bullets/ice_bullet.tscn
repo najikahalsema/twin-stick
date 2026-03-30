@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://6mtedr4ilexb"]
+
+[ext_resource type="Script" uid="uid://c1r6h4a58r666" path="res://weapons/bullets/bullet.gd" id="1_lb767"]
+[ext_resource type="Texture2D" uid="uid://ckoa50clntt4t" path="res://weapons/bullets/ice.png" id="2_8mtok"]
+[ext_resource type="AudioStream" uid="uid://byur8a6v8a7y" path="res://weapons/bullets/hit_ice.wav" id="3_lb767"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lb767"]
+radius = 16.996328
+height = 41.999737
+
+[node name="IceBullet" type="Area2D" unique_id=2059081195]
+script = ExtResource("1_lb767")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1736968268]
+unique_name_in_owner = true
+texture = ExtResource("2_8mtok")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1545722110]
+position = Vector2(16.999998, 1)
+rotation = 1.574362
+shape = SubResource("CapsuleShape2D_lb767")
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="." unique_id=1796940199]
+unique_name_in_owner = true
+stream = ExtResource("3_lb767")

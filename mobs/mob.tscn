@@ -1,0 +1,144 @@
+[gd_scene format=3 uid="uid://c0i2gypp2yyrp"]
+
+[ext_resource type="Script" uid="uid://bg2higt018uyp" path="res://mobs/mob.gd" id="1_bteyy"]
+[ext_resource type="Texture2D" uid="uid://bofr21sykbeu4" path="res://mobs/sword_active.png" id="2_fgbma"]
+[ext_resource type="AudioStream" uid="uid://dfc5tcrthtntk" path="res://mobs/hurt.wav" id="4_4p423"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fgbma"]
+size = Vector2(20, 141)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fgbma"]
+radius = 465.0871
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fgbma"]
+radius = 22.0
+height = 146.0
+
+[sub_resource type="Animation" id="Animation_fgbma"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Avatar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Avatar:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Avatar:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_p7hwu"]
+resource_name = "damaged"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Avatar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.43333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1.04, 0, 0.201, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4p423"]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Avatar:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Avatar:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.44331363]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4p423"]
+_data = {
+&"RESET": SubResource("Animation_fgbma"),
+&"damaged": SubResource("Animation_p7hwu"),
+&"die": SubResource("Animation_4p423")
+}
+
+[node name="Mob" type="CharacterBody2D" unique_id=99254478]
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_bteyy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1227291045]
+position = Vector2(-0.5, 2.1855726e-08)
+rotation = -1.5707964
+shape = SubResource("RectangleShape2D_fgbma")
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=1868464763]
+unique_name_in_owner = true
+
+[node name="DetectionRadius" type="CollisionShape2D" parent="DetectionArea" unique_id=1957439068]
+shape = SubResource("CircleShape2D_fgbma")
+debug_color = Color(0, 0.8627451, 0.15686275, 0.41960785)
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1661186256]
+unique_name_in_owner = true
+
+[node name="HitboxCollisionShape" type="CollisionShape2D" parent="Hitbox" unique_id=1670742184]
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_fgbma")
+debug_color = Color(0.64997596, 0.19941962, 0.36357847, 0.41960785)
+
+[node name="Avatar" type="Sprite2D" parent="." unique_id=1124255280]
+texture = ExtResource("2_fgbma")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1070413824]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_4p423")
+
+[node name="DamageTimer" type="Timer" parent="." unique_id=2056369637]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2145083488]
+unique_name_in_owner = true
+stream = ExtResource("4_4p423")

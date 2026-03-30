@@ -1,0 +1,60 @@
+[gd_resource type="Theme" format=3 uid="uid://bc8bxypbll4le"]
+
+[ext_resource type="FontFile" uid="uid://cmi6sg55wgddn" path="res://common/Montserrat-ExtraBold.ttf" id="1_i66sg"]
+[ext_resource type="FontFile" uid="uid://djfuvgrnv54kr" path="res://common/title_font.tres" id="1_tyilo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dyu62"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.05966015, 0.3243163, 0.34279677, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_brlmh"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.08979926, 0.42849007, 0.45039713, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g663x"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.04142817, 0.26343784, 0.27894577, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i66sg"]
+content_margin_left = 10.0
+content_margin_top = 20.0
+content_margin_right = 10.0
+content_margin_bottom = 20.0
+bg_color = Color(0.14901961, 0.63529414, 0.72156864, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[resource]
+default_font_size = 64
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_i66sg")
+Button/styles/hover = SubResource("StyleBoxFlat_dyu62")
+Button/styles/normal = SubResource("StyleBoxFlat_brlmh")
+Button/styles/pressed = SubResource("StyleBoxFlat_g663x")
+Label/fonts/font = ExtResource("1_tyilo")
+MenuSubheading/base_type = &"Label"
+MenuSubheading/font_sizes/font_size = 40
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_i66sg")

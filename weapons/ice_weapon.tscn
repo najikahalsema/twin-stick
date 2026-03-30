@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://njlnqf7vxeg6"]
+
+[ext_resource type="AudioStream" uid="uid://b06w3ol0nwhi5" path="res://weapons/shoot_ice.wav" id="1_6rw0c"]
+[ext_resource type="Script" uid="uid://c5ifylsbb03kt" path="res://weapons/ice_weapon.gd" id="1_k0i36"]
+[ext_resource type="Texture2D" uid="uid://cjy7elomc65rm" path="res://common/particles/ice_2.png" id="3_r4q4b"]
+
+[sub_resource type="Gradient" id="Gradient_hcqjm"]
+offsets = PackedFloat32Array(0.10245901, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.3882353, 0.8117647, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_76ixs"]
+gradient = SubResource("Gradient_hcqjm")
+
+[sub_resource type="Curve" id="Curve_r4q4b"]
+_data = [Vector2(0, 0.91795754), 0.0, 0.0, 0, 0, Vector2(1, 0.35111874), -1.2065569, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dwd3b"]
+curve = SubResource("Curve_r4q4b")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g8856"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 17.59
+spread = 146.455
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.29999998
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_dwd3b")
+color_ramp = SubResource("GradientTexture1D_76ixs")
+
+[sub_resource type="Animation" id="Animation_r4q4b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_k0i36"]
+resource_name = "charge"
+length = 1.4666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r4q4b"]
+_data = {
+&"RESET": SubResource("Animation_r4q4b"),
+&"charge": SubResource("Animation_k0i36")
+}
+
+[node name="IceWeapon" type="Node2D" unique_id=547502610]
+script = ExtResource("1_k0i36")
+bullet_scene = null
+
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="." unique_id=526080735]
+unique_name_in_owner = true
+stream = ExtResource("1_6rw0c")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=771670164]
+unique_name_in_owner = true
+emitting = false
+amount = 7
+texture = ExtResource("3_r4q4b")
+lifetime = 0.5
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_g8856")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=981702005]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_r4q4b")

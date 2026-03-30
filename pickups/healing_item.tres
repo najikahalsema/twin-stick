@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="HealingItem" format=3 uid="uid://c3vwpj0t03doj"]
+
+[ext_resource type="AudioStream" uid="uid://o3ra7o263286" path="res://pickups/pickup_health.wav" id="1_m81te"]
+[ext_resource type="Script" uid="uid://g4pne0rjubpf" path="res://pickups/healing_item.gd" id="2_q1ec3"]
+[ext_resource type="Texture2D" uid="uid://ciw5x0nryxfqi" path="res://pickups/pickup_heart_darkpink.png" id="3_7mg8t"]
+
+[resource]
+script = ExtResource("2_q1ec3")
+texture = ExtResource("3_7mg8t")
+pickup_sound = ExtResource("1_m81te")
+metadata/_custom_type_script = "uid://g4pne0rjubpf"

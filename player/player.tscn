@@ -1,0 +1,395 @@
+[gd_scene format=3 uid="uid://43ku0c7m8gqa"]
+
+[ext_resource type="Script" uid="uid://hi2ss6vd62tk" path="res://player/player.gd" id="1_rkbax"]
+[ext_resource type="Texture2D" uid="uid://bw03btxpkxde4" path="res://player/godot_bottom.png" id="2_g1dw6"]
+[ext_resource type="PackedScene" uid="uid://5ays6kuo0xio" path="res://common/shadow.tscn" id="2_yw30f"]
+[ext_resource type="Script" uid="uid://dyt5htdav7w4y" path="res://player/avatar.gd" id="4_yw30f"]
+[ext_resource type="Script" uid="uid://cd4873bcfranp" path="res://player/weapon_pivot.gd" id="5_boad6"]
+[ext_resource type="PackedScene" uid="uid://cmcxoh45b2757" path="res://weapons/weapon.tscn" id="5_g6k8r"]
+[ext_resource type="Texture2D" uid="uid://dekkcmj408pvt" path="res://player/hand_fire.png" id="6_boad6"]
+[ext_resource type="Theme" uid="uid://ck3hom1nntbhr" path="res://common/theme.tres" id="8_rgyib"]
+[ext_resource type="AudioStream" uid="uid://c6bk7awsqnbt8" path="res://player/pain_01.wav" id="9_yllr7"]
+[ext_resource type="AudioStream" uid="uid://deol7mqpv4xhy" path="res://player/pain_02.wav" id="10_kb6p2"]
+[ext_resource type="AudioStream" uid="uid://bv2sasgvsrp4i" path="res://player/pain_03.wav" id="11_wodsf"]
+[ext_resource type="AudioStream" uid="uid://17y53e55al8d" path="res://player/pain_04.wav" id="12_32hag"]
+[ext_resource type="AudioStream" uid="uid://dgdkinlpjq4ob" path="res://player/pain_05.wav" id="13_tqiix"]
+[ext_resource type="AudioStream" uid="uid://ursqvcxb3uov" path="res://player/death_01.wav" id="14_32hag"]
+[ext_resource type="AudioStream" uid="uid://b3w6lv1kglxf6" path="res://player/death_02.wav" id="15_tqiix"]
+[ext_resource type="AudioStream" uid="uid://c56hqbbb5ktp1" path="res://player/death_03.wav" id="16_e7oew"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yw30f"]
+radius = 32.0
+
+[sub_resource type="Animation" id="Animation_hg6s5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Avatar:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Avatar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WeaponPivot/WeaponAnchor/HandLeft:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, 17.456001)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WeaponPivot/WeaponAnchor/HandRight:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, -24)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WeaponPivot/WeaponAnchor/HandLeft:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.37514526]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("WeaponPivot/WeaponAnchor/HandRight:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.36182195]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Shadow:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Control/HealthBar:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Avatar:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("WeaponPivot/WeaponAnchor/HandLeft:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("WeaponPivot/WeaponAnchor/HandRight:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8t03j"]
+resource_name = "damaged"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Avatar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.9999998, 0.008636967, 0.14686403, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponPivot/WeaponAnchor/HandLeft:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.6202802, 0, 0.07281738, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WeaponPivot/WeaponAnchor/HandRight:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.6202802, 0, 0.07281738, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rgyib"]
+resource_name = "die"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Avatar:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.59437346, -1.5707964]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Avatar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -16), Vector2(0, 48)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WeaponPivot/WeaponAnchor/HandLeft:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.53333336, 1.175),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-3, 17.456001), Vector2(-46, -110), Vector2(-22, 90)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WeaponPivot/WeaponAnchor/HandRight:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.53333336, 0.9666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-3, -24), Vector2(-150, -86), Vector2(-122.70057, 83.65282)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WeaponPivot/WeaponAnchor/HandLeft:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.53333336, 1.175),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.37514526, -1.2777927, 2.7768188]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("WeaponPivot/WeaponAnchor/HandRight:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.52500004, 0.9583334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.36182195, -2.504528, -2.504528]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Shadow:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Control/HealthBar:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6333333, 1.0666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.50694686, 0.21807332, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hg6s5"]
+_data = {
+&"RESET": SubResource("Animation_hg6s5"),
+&"damaged": SubResource("Animation_8t03j"),
+&"die": SubResource("Animation_rgyib")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_e7oew"]
+streams_count = 5
+stream_0/stream = ExtResource("9_yllr7")
+stream_1/stream = ExtResource("10_kb6p2")
+stream_2/stream = ExtResource("11_wodsf")
+stream_3/stream = ExtResource("12_32hag")
+stream_4/stream = ExtResource("13_tqiix")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_c35mf"]
+streams_count = 3
+stream_0/stream = ExtResource("14_32hag")
+stream_1/stream = ExtResource("15_tqiix")
+stream_2/stream = ExtResource("16_e7oew")
+
+[node name="Player" type="CharacterBody2D" unique_id=2080458370]
+collision_mask = 66
+motion_mode = 1
+script = ExtResource("1_rkbax")
+
+[node name="Shadow" parent="." unique_id=1248022020 instance=ExtResource("2_yw30f")]
+
+[node name="Avatar" type="Sprite2D" parent="." unique_id=1442525363]
+unique_name_in_owner = true
+z_index = 2
+texture = ExtResource("2_g1dw6")
+script = ExtResource("4_yw30f")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1785633111]
+
+[node name="WeaponPivot" type="Node2D" parent="." unique_id=891046448]
+unique_name_in_owner = true
+z_index = 1
+script = ExtResource("5_boad6")
+
+[node name="WeaponAnchor" type="Marker2D" parent="WeaponPivot" unique_id=461996353]
+unique_name_in_owner = true
+position = Vector2(70, 14)
+
+[node name="Weapon" parent="WeaponPivot/WeaponAnchor" unique_id=267997631 instance=ExtResource("5_g6k8r")]
+unique_name_in_owner = true
+position = Vector2(-70, -14)
+
+[node name="HandLeft" type="Sprite2D" parent="WeaponPivot/WeaponAnchor" unique_id=1050219136]
+unique_name_in_owner = true
+position = Vector2(-3, 17.456001)
+rotation = 0.37514526
+scale = Vector2(0.7803832, 0.7803832)
+texture = ExtResource("6_boad6")
+
+[node name="HandRight" type="Sprite2D" parent="WeaponPivot/WeaponAnchor" unique_id=1759963190]
+unique_name_in_owner = true
+position = Vector2(-3, -24)
+rotation = -0.36182195
+scale = Vector2(0.78, 0.78)
+texture = ExtResource("6_boad6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=935235499]
+unique_name_in_owner = true
+position = Vector2(0, 24)
+rotation = 0.023416217
+shape = SubResource("CircleShape2D_yw30f")
+
+[node name="Control" type="Control" parent="." unique_id=864427439]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthBar" type="ProgressBar" parent="Control" unique_id=1989169758]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -68.0
+offset_top = -108.0
+offset_right = 68.0
+offset_bottom = -92.0
+theme = ExtResource("8_rgyib")
+max_value = 5.0
+step = 1.0
+value = 5.0
+show_percentage = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=57073304]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_hg6s5")
+
+[node name="PainSounds" type="AudioStreamPlayer" parent="." unique_id=1960262406]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_e7oew")
+
+[node name="DeathSounds" type="AudioStreamPlayer" parent="." unique_id=602820296]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_c35mf")

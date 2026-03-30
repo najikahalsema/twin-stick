@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://cnimbin4l3i2f"]
+
+[ext_resource type="Script" uid="uid://xcy1c2osure8" path="res://pickups/chest/chest.gd" id="1_6c0c5"]
+[ext_resource type="Texture2D" uid="uid://dub7cda3qxho2" path="res://pickups/chest/chest_bottom.png" id="2_lnm3d"]
+[ext_resource type="Texture2D" uid="uid://bfj2ayjhou4bv" path="res://pickups/chest/chest_top.png" id="3_44fms"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7m3xh"]
+size = Vector2(80, 69)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n0ewp"]
+radius = 64.0
+
+[sub_resource type="Animation" id="Animation_6c0c5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Top:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_lnm3d"]
+resource_name = "open"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Top:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.73333335),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(32, 0), Vector2(64, 8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Top:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.33, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.6806784]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_44fms"]
+_data = {
+&"RESET": SubResource("Animation_6c0c5"),
+&"open": SubResource("Animation_lnm3d")
+}
+
+[node name="Chest" type="Area2D" unique_id=1117716808]
+script = ExtResource("1_6c0c5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1806244850]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1137547697]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_7m3xh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1659138699]
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_n0ewp")
+
+[node name="Bottom" type="Sprite2D" parent="." unique_id=1704403167]
+texture = ExtResource("2_lnm3d")
+
+[node name="Top" type="Sprite2D" parent="." unique_id=385381009]
+texture = ExtResource("3_44fms")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=404145318]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_44fms")

@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://cduvywq42xys"]
+
+[ext_resource type="Theme" uid="uid://bc8bxypbll4le" path="res://ui/end_theme.tres" id="1_4ksec"]
+[ext_resource type="Script" uid="uid://dphoia5pxwxr8" path="res://ui/end_menu.gd" id="1_bje0f"]
+[ext_resource type="Shader" uid="uid://bsf1a25jxwlv1" path="res://common/shaders/blur_and_tint.gdshader" id="2_sewyj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p33gb"]
+shader = ExtResource("2_sewyj")
+shader_parameter/blur_amount = 0.0
+shader_parameter/tint = Color(0, 0, 0, 1)
+shader_parameter/tint_strength = 0.0
+shader_parameter/saturation = 1.0
+
+[node name="EndMenu" type="Control" unique_id=1835711575]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bje0f")
+
+[node name="BackgroundRect" type="ColorRect" parent="." unique_id=1970837089]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_p33gb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.4862745, 0.7882353, 0.8862745, 1)
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1193870033]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -292.0
+offset_top = -196.0
+offset_right = 292.0
+offset_bottom = 196.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_4ksec")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1405708329]
+layout_mode = 2
+
+[node name="EndTitle" type="Label" parent="PanelContainer/VBoxContainer" unique_id=739616950]
+layout_mode = 2
+theme = ExtResource("1_4ksec")
+text = "You won!"
+horizontal_alignment = 1
+
+[node name="TimeScore" type="Label" parent="PanelContainer/VBoxContainer" unique_id=395448654]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_4ksec")
+theme_type_variation = &"MenuSubheading"
+text = "Time: "
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer" unique_id=1393099248]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/CenterContainer" unique_id=2035842582]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ReplayButton" type="Button" parent="PanelContainer/VBoxContainer/CenterContainer/VBoxContainer" unique_id=790069613]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_4ksec")
+text = "Play again"
+
+[node name="QuitButton" type="Button" parent="PanelContainer/VBoxContainer/CenterContainer/VBoxContainer" unique_id=393641674]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_4ksec")
+text = "Quit"

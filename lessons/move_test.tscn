@@ -1,0 +1,47 @@
+[gd_scene format=4 uid="uid://bqrmuar6hvw53"]
+
+[ext_resource type="PackedScene" uid="uid://cu2rb5dl4ljte" path="res://levels/rooms/room_a.tscn" id="1_b02w7"]
+[ext_resource type="Script" uid="uid://s16v2lejx253" path="res://lessons/move_test.gd" id="1_tr8w6"]
+[ext_resource type="PackedScene" uid="uid://43ku0c7m8gqa" path="res://player/player.tscn" id="2_471js"]
+[ext_resource type="PackedScene" uid="uid://c0i2gypp2yyrp" path="res://mobs/mob.tscn" id="4_6wlwo"]
+[ext_resource type="PackedScene" uid="uid://dgayuh42w4v6u" path="res://levels/rooms/room_b.tscn" id="4_et0a7"]
+[ext_resource type="PackedScene" uid="uid://cq0mmphkbrvmm" path="res://levels/rooms/room_c.tscn" id="5_wcvdv"]
+[ext_resource type="PackedScene" uid="uid://cnimbin4l3i2f" path="res://pickups/chest/chest.tscn" id="5_xxokp"]
+[ext_resource type="PackedScene" uid="uid://c3fl3stluv0gn" path="res://levels/bridges.tscn" id="8_mb83q"]
+[ext_resource type="PackedScene" uid="uid://dlxjrgals3rg2" path="res://levels/invisible_walls.tscn" id="9_tr8w6"]
+[ext_resource type="PackedScene" uid="uid://wdey00p3syru" path="res://levels/background/background_blue_sky.tscn" id="10_tr8w6"]
+
+[node name="Node2D" type="Node2D" unique_id=1600460681]
+y_sort_enabled = true
+script = ExtResource("1_tr8w6")
+
+[node name="Player" parent="." unique_id=2080458370 instance=ExtResource("2_471js")]
+position = Vector2(424, 304)
+collision_mask = 65
+
+[node name="RoomA" parent="." unique_id=787488782 instance=ExtResource("1_b02w7")]
+metadata/_edit_lock_ = true
+
+[node name="Mob" parent="RoomA" unique_id=99254478 instance=ExtResource("4_6wlwo")]
+position = Vector2(1024, 608)
+
+[node name="Mob2" parent="RoomA" unique_id=659729695 instance=ExtResource("4_6wlwo")]
+position = Vector2(648, 1000)
+
+[node name="RoomB" parent="." unique_id=230680198 instance=ExtResource("4_et0a7")]
+position = Vector2(2048, 256)
+
+[node name="Chest" parent="RoomB" unique_id=1117716808 instance=ExtResource("5_xxokp")]
+position = Vector2(448, 328)
+
+[node name="RoomC" parent="." unique_id=1205154428 instance=ExtResource("5_wcvdv")]
+position = Vector2(1832, -2520)
+
+[node name="BackgroundBlueSky" parent="." unique_id=2076738753 instance=ExtResource("10_tr8w6")]
+
+[node name="Bridges" parent="." unique_id=1799946570 instance=ExtResource("8_mb83q")]
+tile_map_data = PackedByteArray("AAALAAQAAAAAAAEAAAAMAAQAAAABAAEAAAANAAQAAAACAAEAAAAOAAQAAAABAAAAAFAOAAUAAAADAAEAAAAOAAYAAAACAAAAAAAPAAYAAAAAAAEAAAA=")
+
+[node name="InvisibleWalls" parent="." unique_id=1432207151 instance=ExtResource("9_tr8w6")]
+unique_name_in_owner = true
+tile_map_data = PackedByteArray("AAAMAAUAAAAAAAAAAAANAAUAAAAAAAAAAAANAAYAAAAAAAAAAAANAAcAAAAAAAAAAAAOAAcAAAAAAAAAAAAOAAMAAAAAAAAAAAANAAMAAAAAAAAAAAAMAAMAAAAAAAAAAAA=")

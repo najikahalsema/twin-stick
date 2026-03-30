@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://di05o5yap3qja"]
+
+[ext_resource type="Script" uid="uid://cyw0pvhqlc6jj" path="res://pickups/pickup.gd" id="1_ra232"]
+[ext_resource type="PackedScene" uid="uid://5ays6kuo0xio" path="res://common/shadow.tscn" id="3_i5kuo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i5kuo"]
+radius = 24.0
+height = 48.0
+
+[sub_resource type="Animation" id="Animation_pbiw3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shadow:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5462963, 0.44047618)]
+}
+
+[sub_resource type="Animation" id="Animation_fi3t6"]
+resource_name = "consume"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shadow:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.57),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5462963, 0.44047618), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_x6t5v"]
+resource_name = "idle"
+length = 1.9666667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.23333333, 0.8333333, 1.6333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -8), Vector2(0, 7.9999995)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fi3t6"]
+_data = {
+&"RESET": SubResource("Animation_pbiw3"),
+&"consume": SubResource("Animation_fi3t6"),
+&"idle": SubResource("Animation_x6t5v")
+}
+
+[node name="Pickup" type="Area2D" unique_id=550241138]
+script = ExtResource("1_ra232")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=637661927]
+shape = SubResource("CapsuleShape2D_i5kuo")
+
+[node name="Shadow" parent="." unique_id=1873483432 instance=ExtResource("3_i5kuo")]
+position = Vector2(4.7683716e-07, 27.999998)
+scale = Vector2(0.5462963, 0.44047618)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2038167770]
+unique_name_in_owner = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=117579397]
+unique_name_in_owner = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=499841453]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_fi3t6")
