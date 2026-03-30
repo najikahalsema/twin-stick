@@ -17,11 +17,11 @@ func shoot() -> void:
 	var bullet: Node = bullet_scene.instantiate()
 	get_tree().current_scene.add_child(bullet)
 	
+	if shoot_sound != null:
+		shoot_sound.play()
+
 	bullet.global_position = global_position
 	bullet.global_rotation = global_rotation
 	bullet.max_range = max_range
 	bullet.speed = max_bullet_speed
 	bullet.rotation += randf_range(-random_angle / 2.0, random_angle / 2.0)
-
-	if shoot_sound != null:
-		shoot_sound.play()

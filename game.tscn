@@ -8,15 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://bqwac15wys7j3" path="res://teleporter/teleporter.tscn" id="4_hb5m1"]
 [ext_resource type="PackedScene" uid="uid://c0i2gypp2yyrp" path="res://mobs/mob.tscn" id="4_lc2xo"]
 [ext_resource type="PackedScene" uid="uid://dgayuh42w4v6u" path="res://levels/rooms/room_b.tscn" id="5_215e1"]
-[ext_resource type="Texture2D" uid="uid://copkt78vgp37i" path="res://npc/dialogue/sophia.png" id="5_iu0sx"]
-[ext_resource type="Texture2D" uid="uid://d000xjtr4iqtk" path="res://npc/dialogue/emotion_regular.png" id="6_4v2jo"]
 [ext_resource type="PackedScene" uid="uid://cnimbin4l3i2f" path="res://pickups/chest/chest.tscn" id="6_7sc4i"]
 [ext_resource type="Texture2D" uid="uid://culqdxmdoyqo2" path="res://levels/props/grass_rock_1.png" id="6_rvswv"]
 [ext_resource type="PackedScene" uid="uid://cq0mmphkbrvmm" path="res://levels/rooms/room_c.tscn" id="7_80cx4"]
 [ext_resource type="Texture2D" uid="uid://c7x0dwetkulkh" path="res://levels/props/grass_rock_2.png" id="7_boyg6"]
-[ext_resource type="Script" uid="uid://8m4p5ucgmg34" path="res://npc/dialogue/dialogue_entry.gd" id="7_l1i01"]
 [ext_resource type="PackedScene" uid="uid://wdey00p3syru" path="res://levels/background/background_blue_sky.tscn" id="8_e8heu"]
-[ext_resource type="AudioStream" uid="uid://bm2mvov4dm0aw" path="res://npc/dialogue/talking_synth_alternate.ogg" id="8_r62pu"]
 [ext_resource type="AudioStream" uid="uid://dsmj3ii4ncxyl" path="res://pickups/pickup_ice.wav" id="8_xa8c5"]
 [ext_resource type="Script" uid="uid://r71m4i05wrht" path="res://pickups/ice_weapon_item.gd" id="9_5b14r"]
 [ext_resource type="Texture2D" uid="uid://bsw2xiqemlhfp" path="res://levels/props/table_small_pots.png" id="9_qhcbd"]
@@ -38,10 +34,12 @@
 [ext_resource type="Texture2D" uid="uid://ciw5x0nryxfqi" path="res://pickups/pickup_heart_darkpink.png" id="24_7knny"]
 [ext_resource type="AudioStream" uid="uid://cgkhr5s5txcxx" path="res://common/music/EZDNB2 (CC-BY Of Far Different Nature).ogg" id="24_f1jbl"]
 
-[sub_resource type="Resource" id="Resource_klri6"]
-script = ExtResource("7_l1i01")
-text = "Hi."
-metadata/_custom_type_script = "uid://8m4p5ucgmg34"
+[sub_resource type="Resource" id="Resource_36jdj"]
+script = ExtResource("9_5b14r")
+display_name = "ice weapon"
+texture = ExtResource("10_bnpwn")
+pickup_sound = ExtResource("8_xa8c5")
+metadata/_custom_type_script = "uid://r71m4i05wrht"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5b14r"]
 size = Vector2(64, 34)
@@ -54,13 +52,6 @@ script = ExtResource("23_dhpj7")
 texture = ExtResource("24_7knny")
 pickup_sound = ExtResource("22_xfvwf")
 metadata/_custom_type_script = "uid://g4pne0rjubpf"
-
-[sub_resource type="Resource" id="Resource_36jdj"]
-script = ExtResource("9_5b14r")
-display_name = "ice weapon"
-texture = ExtResource("10_bnpwn")
-pickup_sound = ExtResource("8_xa8c5")
-metadata/_custom_type_script = "uid://r71m4i05wrht"
 
 [node name="Game" type="Node2D" unique_id=1600460681]
 y_sort_enabled = true
@@ -75,7 +66,10 @@ metadata/_edit_lock_ = true
 
 [node name="NPC" parent="RoomD" unique_id=230303253 instance=ExtResource("4_082n1")]
 position = Vector2(712, 464)
-dialogue = Array[Object]([SubResource("Resource_klri6")])
+
+[node name="PickupIce" parent="RoomD" unique_id=550241138 instance=ExtResource("15_f1jbl")]
+position = Vector2(832, 520)
+item = SubResource("Resource_36jdj")
 
 [node name="RoomA" parent="." unique_id=787488782 instance=ExtResource("3_iotsf")]
 metadata/_edit_lock_ = true
@@ -169,10 +163,6 @@ position = Vector2(616, 128)
 
 [node name="ArmedMob" parent="RoomC" unique_id=392309193 instance=ExtResource("11_5b14r")]
 position = Vector2(744, 896)
-
-[node name="PickupIce" parent="RoomC" unique_id=550241138 instance=ExtResource("15_f1jbl")]
-position = Vector2(-1232, 1936)
-item = SubResource("Resource_36jdj")
 
 [node name="BackgroundBlueSky" parent="." unique_id=2076738753 instance=ExtResource("8_e8heu")]
 
