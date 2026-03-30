@@ -58,18 +58,24 @@ y_sort_enabled = true
 script = ExtResource("1_hve3p")
 
 [node name="Player" parent="." unique_id=2080458370 instance=ExtResource("2_mfdv2")]
-position = Vector2(472, 3184)
+y_sort_enabled = false
+position = Vector2(704, 1016)
 
 [node name="RoomD" parent="." unique_id=2047460824 instance=ExtResource("3_7knny")]
 position = Vector2(0, 1984)
 metadata/_edit_lock_ = true
 
 [node name="NPC" parent="RoomD" unique_id=230303253 instance=ExtResource("4_082n1")]
+y_sort_enabled = false
 position = Vector2(712, 464)
 
 [node name="PickupIce" parent="RoomD" unique_id=550241138 instance=ExtResource("15_f1jbl")]
 position = Vector2(832, 520)
 item = SubResource("Resource_36jdj")
+
+[node name="GrassRock3" type="Sprite2D" parent="RoomD" unique_id=776734615]
+position = Vector2(968, -960)
+texture = ExtResource("6_rvswv")
 
 [node name="RoomA" parent="." unique_id=787488782 instance=ExtResource("3_iotsf")]
 metadata/_edit_lock_ = true
@@ -79,10 +85,12 @@ position = Vector2(1024, 608)
 collision_mask = 3
 
 [node name="GrassRock1" type="Sprite2D" parent="RoomA" unique_id=1920525518]
-position = Vector2(968, 1024)
+y_sort_enabled = true
+position = Vector2(608, 2728)
 texture = ExtResource("6_rvswv")
 
 [node name="GrassRock2" type="Sprite2D" parent="RoomA" unique_id=1317177534]
+y_sort_enabled = true
 position = Vector2(864, 408)
 texture = ExtResource("7_boyg6")
 

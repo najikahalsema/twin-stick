@@ -316,6 +316,7 @@ stream_1/stream = ExtResource("15_tqiix")
 stream_2/stream = ExtResource("16_e7oew")
 
 [node name="Player" type="CharacterBody2D" unique_id=2080458370]
+y_sort_enabled = true
 collision_mask = 66
 motion_mode = 1
 script = ExtResource("1_rkbax")
@@ -325,6 +326,7 @@ script = ExtResource("1_rkbax")
 [node name="Avatar" type="Sprite2D" parent="." unique_id=1442525363]
 unique_name_in_owner = true
 z_index = 2
+y_sort_enabled = true
 texture = ExtResource("2_g1dw6")
 script = ExtResource("4_yw30f")
 

@@ -58,12 +58,15 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
 	move_and_slide()
-	
+
+## Switches the Player's Weapon and resets the timer, after which the weapon returns to the one set 
+## via base_weapon_scene
 func change_weapon(weapon_scene: PackedScene, hand_texture: Texture) -> void:
 		if equipped_weapon != null:
 			equipped_weapon.queue_free()
-		# This is very cringe but it prevents the first weapon's bullets from also firing
-		# weapon_anchor's first child is the fire bullets 
+		# This is probably not the ideal way to do this, but this line prevents 
+		# the first weapon's bullets from also firing bc weapon_anchor's first 
+		# child is the bullet scene
 		weapon_anchor.remove_child(weapon_anchor.get_child(0))
 		
 		equipped_weapon = weapon_scene.instantiate()
@@ -80,11 +83,9 @@ func change_weapon(weapon_scene: PackedScene, hand_texture: Texture) -> void:
 func reset_weapon() -> void:
 	if equipped_weapon:
 		equipped_weapon.queue_free()
+		
 	equipped_weapon = base_weapon_scene.instantiate()
 	weapon_anchor.add_child(equipped_weapon)
-	# This doesn't work so there's no bullet and the code crashes 
-	# equipped_weapon.bullet_scene = preload("uid://d1cm7qj3w5xtl")
-
 	hand_left.texture = preload("uid://dekkcmj408pvt")
 	hand_right.texture = preload("uid://dekkcmj408pvt")
 
@@ -95,9 +96,8 @@ func take_damage() -> void:
 func die() -> void:
 	toggle_player_control(false)
 
-	# wait until physics engine processes updates before changing property
+	# wait until physics engine processes updates before changing the property
 	_collision_shape_2d.set_deferred("disabled", true) 
-	
 	_death_sounds.play()
 	animation_player.play("die")
 	_death_sounds.finished.connect(get_tree().reload_current_scene.call_deferred)
@@ -106,7 +106,5 @@ func toggle_player_control(is_active: bool) -> void:
 	set_physics_process(is_active)
 	_avatar.set_physics_process(is_active)
 	_weapon_pivot.set_process(is_active)
-	# Code crashes if i don't gate this, but these lines don't seem necessary
-	# with the game's current functionality 
-	if equipped_weapon != null:
-		equipped_weapon.set_physics_process(is_active)
+	print(equipped_weapon, base_weapon_scene.get_state().get_node_name)
+	
