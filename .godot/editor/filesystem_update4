@@ -1,5 +1,5 @@
 res://default_env.tres
-res://npc/sophia.tscn
+res://npc/dialogue/dialogue_box.tscn
 res://common/theme.tres
 res://levels/rooms/tilesets/floating_dungeon_tileset.tres
 res://levels/rooms/tilesets/tileset_invisible_walls.tres
@@ -7,13 +7,8 @@ res://ui/end_theme.tres
 res://common/particles/confettis/confettis.gdshader
 res://common/shaders/blur_and_tint.gdshader
 res://common/shaders/flash.gdshader
-res://levels/test.tscn
-res://ui/dialogue_box.tscn
-res://npc/sophia.gd
-res://ui/dialogue_box.gd
-res://npc/dialogue/dialogue_box.tscn
 res://npc/dialogue/dialogue_box.gd
-res://npc/dialogue/dialogue_entry.gd
-res://weapons/weapon.tscn
+res://npc/sophia.tscn
+res://npc/sophia.gd
+res://player/player.tscn
 res://player/player.gd
-res://game.tscn
