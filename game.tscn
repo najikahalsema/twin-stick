@@ -2,15 +2,21 @@
 
 [ext_resource type="Script" uid="uid://s16v2lejx253" path="res://lessons/move_test.gd" id="1_hve3p"]
 [ext_resource type="PackedScene" uid="uid://43ku0c7m8gqa" path="res://player/player.tscn" id="2_mfdv2"]
+[ext_resource type="PackedScene" uid="uid://diw0kp1e3livt" path="res://levels/rooms/room_d.tscn" id="3_7knny"]
 [ext_resource type="PackedScene" uid="uid://cu2rb5dl4ljte" path="res://levels/rooms/room_a.tscn" id="3_iotsf"]
+[ext_resource type="PackedScene" uid="uid://grkbtkeyvpa0" path="res://npc/npc.tscn" id="4_082n1"]
 [ext_resource type="PackedScene" uid="uid://bqwac15wys7j3" path="res://teleporter/teleporter.tscn" id="4_hb5m1"]
 [ext_resource type="PackedScene" uid="uid://c0i2gypp2yyrp" path="res://mobs/mob.tscn" id="4_lc2xo"]
 [ext_resource type="PackedScene" uid="uid://dgayuh42w4v6u" path="res://levels/rooms/room_b.tscn" id="5_215e1"]
+[ext_resource type="Texture2D" uid="uid://copkt78vgp37i" path="res://npc/dialogue/sophia.png" id="5_iu0sx"]
+[ext_resource type="Texture2D" uid="uid://d000xjtr4iqtk" path="res://npc/dialogue/emotion_regular.png" id="6_4v2jo"]
 [ext_resource type="PackedScene" uid="uid://cnimbin4l3i2f" path="res://pickups/chest/chest.tscn" id="6_7sc4i"]
 [ext_resource type="Texture2D" uid="uid://culqdxmdoyqo2" path="res://levels/props/grass_rock_1.png" id="6_rvswv"]
 [ext_resource type="PackedScene" uid="uid://cq0mmphkbrvmm" path="res://levels/rooms/room_c.tscn" id="7_80cx4"]
 [ext_resource type="Texture2D" uid="uid://c7x0dwetkulkh" path="res://levels/props/grass_rock_2.png" id="7_boyg6"]
+[ext_resource type="Script" uid="uid://8m4p5ucgmg34" path="res://npc/dialogue/dialogue_entry.gd" id="7_l1i01"]
 [ext_resource type="PackedScene" uid="uid://wdey00p3syru" path="res://levels/background/background_blue_sky.tscn" id="8_e8heu"]
+[ext_resource type="AudioStream" uid="uid://bm2mvov4dm0aw" path="res://npc/dialogue/talking_synth_alternate.ogg" id="8_r62pu"]
 [ext_resource type="AudioStream" uid="uid://dsmj3ii4ncxyl" path="res://pickups/pickup_ice.wav" id="8_xa8c5"]
 [ext_resource type="Script" uid="uid://r71m4i05wrht" path="res://pickups/ice_weapon_item.gd" id="9_5b14r"]
 [ext_resource type="Texture2D" uid="uid://bsw2xiqemlhfp" path="res://levels/props/table_small_pots.png" id="9_qhcbd"]
@@ -31,6 +37,11 @@
 [ext_resource type="Script" uid="uid://g4pne0rjubpf" path="res://pickups/healing_item.gd" id="23_dhpj7"]
 [ext_resource type="Texture2D" uid="uid://ciw5x0nryxfqi" path="res://pickups/pickup_heart_darkpink.png" id="24_7knny"]
 [ext_resource type="AudioStream" uid="uid://cgkhr5s5txcxx" path="res://common/music/EZDNB2 (CC-BY Of Far Different Nature).ogg" id="24_f1jbl"]
+
+[sub_resource type="Resource" id="Resource_klri6"]
+script = ExtResource("7_l1i01")
+text = "Hi."
+metadata/_custom_type_script = "uid://8m4p5ucgmg34"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5b14r"]
 size = Vector2(64, 34)
@@ -56,16 +67,25 @@ y_sort_enabled = true
 script = ExtResource("1_hve3p")
 
 [node name="Player" parent="." unique_id=2080458370 instance=ExtResource("2_mfdv2")]
-position = Vector2(344, 232)
+position = Vector2(472, 3184)
+
+[node name="RoomD" parent="." unique_id=2047460824 instance=ExtResource("3_7knny")]
+position = Vector2(0, 1984)
+metadata/_edit_lock_ = true
+
+[node name="NPC" parent="RoomD" unique_id=230303253 instance=ExtResource("4_082n1")]
+position = Vector2(712, 464)
+dialogue = Array[Object]([SubResource("Resource_klri6")])
 
 [node name="RoomA" parent="." unique_id=787488782 instance=ExtResource("3_iotsf")]
+metadata/_edit_lock_ = true
 
 [node name="Mob" parent="RoomA" unique_id=99254478 instance=ExtResource("4_lc2xo")]
 position = Vector2(1024, 608)
 collision_mask = 3
 
 [node name="GrassRock1" type="Sprite2D" parent="RoomA" unique_id=1920525518]
-position = Vector2(848, 1112)
+position = Vector2(968, 1024)
 texture = ExtResource("6_rvswv")
 
 [node name="GrassRock2" type="Sprite2D" parent="RoomA" unique_id=1317177534]
@@ -157,12 +177,12 @@ item = SubResource("Resource_36jdj")
 [node name="BackgroundBlueSky" parent="." unique_id=2076738753 instance=ExtResource("8_e8heu")]
 
 [node name="Bridges" parent="." unique_id=1799946570 instance=ExtResource("9_rvswv")]
-tile_map_data = PackedByteArray("AAALAAQAAAAAAAEAAAAMAAQAAAABAAEAAAANAAQAAAACAAEAAAAOAAQAAAABAAAAAFAOAAUAAAADAAEAAAAOAAYAAAACAAAAAAAPAAYAAAAAAAEAAAAXAAEAAAADAAEAAAAXAAAAAAADAAEAAAAXAP//AAADAAEAAAAXAP3/AAADAAEAAAAXAP7/AAADAAEAAAA=")
+tile_map_data = PackedByteArray("AAALAAQAAAAAAAEAAAAMAAQAAAABAAEAAAANAAQAAAACAAEAAAAOAAQAAAABAAAAAFAOAAUAAAADAAEAAAAOAAYAAAACAAAAAAAPAAYAAAAAAAEAAAAXAAEAAAADAAEAAAAXAAAAAAADAAEAAAAXAP//AAADAAEAAAAXAP3/AAADAAEAAAAXAP7/AAADAAEAAAAGAA0AAAADAAEAAAAGAAwAAAADAAEAAAAGAAsAAAADAAEAAAAGAAoAAAADAAEAAAAGAA4AAAACAAEAAFAGAA8AAAACAAEAAFAGAAkAAAADAAEAAAA=")
 
 [node name="InvisibleWalls" parent="." unique_id=1432207151 instance=ExtResource("10_boyg6")]
 unique_name_in_owner = true
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAMAAUAAAAAAAAAAAANAAUAAAAAAAAAAAANAAYAAAAAAAAAAAANAAcAAAAAAAAAAAAOAAcAAAAAAAAAAAAOAAMAAAAAAAAAAAANAAMAAAAAAAAAAAAMAAMAAAAAAAAAAAAWAAAAAAAAAAAAAAAWAP//AAAAAAAAAAAYAP//AAAAAAAAAAAYAAAAAAAAAAAAAAAWAP7/AAABAAAAAAAYAP7/AAABAAAAAAA=")
+tile_map_data = PackedByteArray("AAAMAAUAAAAAAAAAAAANAAUAAAAAAAAAAAANAAYAAAAAAAAAAAANAAcAAAAAAAAAAAAOAAcAAAAAAAAAAAAOAAMAAAAAAAAAAAANAAMAAAAAAAAAAAAMAAMAAAAAAAAAAAAWAAAAAAAAAAAAAAAWAP//AAAAAAAAAAAYAP//AAAAAAAAAAAYAAAAAAAAAAAAAAAWAP7/AAABAAAAAAAYAP7/AAABAAAAAAAHAAsAAAAAAAAAAAAFAAsAAAAAAAAAAAAFAAwAAAAAAAAAAAAHAAwAAAAAAAAAAAAHAA0AAAAAAAAAAAAFAA0AAAAAAAAAAAAHAA4AAAABAAAAADAFAA4AAAABAAAAADA=")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1339661556]
 

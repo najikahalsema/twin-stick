@@ -117,6 +117,7 @@ shape = SubResource("RectangleShape2D_fgbma")
 unique_name_in_owner = true
 
 [node name="DetectionRadius" type="CollisionShape2D" parent="DetectionArea" unique_id=1957439068]
+visible = false
 shape = SubResource("CircleShape2D_fgbma")
 debug_color = Color(0, 0.8627451, 0.15686275, 0.41960785)
 
