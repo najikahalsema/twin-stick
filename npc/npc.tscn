@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://copkt78vgp37i" path="res://npc/dialogue/sophia.png" id="4_ml2qy"]
 [ext_resource type="Texture2D" uid="uid://d000xjtr4iqtk" path="res://npc/dialogue/emotion_regular.png" id="5_pahx2"]
 [ext_resource type="AudioStream" uid="uid://bm2mvov4dm0aw" path="res://npc/dialogue/talking_synth_alternate.ogg" id="8_ml2qy"]
-[ext_resource type="Texture2D" uid="uid://bhinvhx75etr2" path="res://npc/dialogue/emotion_sad.png" id="9_phifv"]
 [ext_resource type="Texture2D" uid="uid://dchimpdsnda13" path="res://npc/dialogue/emotion_happy.png" id="9_wuxkc"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vqtkm"]
@@ -33,7 +32,7 @@ metadata/_custom_type_script = "uid://8m4p5ucgmg34"
 
 [sub_resource type="Resource" id="Resource_m62cl"]
 script = ExtResource("4_a1oy0")
-expression = ExtResource("9_phifv")
+expression = ExtResource("9_wuxkc")
 text = "Why not give it a try?"
 metadata/_custom_type_script = "uid://8m4p5ucgmg34"
 
