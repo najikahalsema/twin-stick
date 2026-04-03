@@ -33,6 +33,8 @@
 [ext_resource type="Script" uid="uid://g4pne0rjubpf" path="res://pickups/healing_item.gd" id="23_dhpj7"]
 [ext_resource type="Texture2D" uid="uid://ciw5x0nryxfqi" path="res://pickups/pickup_heart_darkpink.png" id="24_7knny"]
 [ext_resource type="AudioStream" uid="uid://cgkhr5s5txcxx" path="res://common/music/EZDNB2 (CC-BY Of Far Different Nature).ogg" id="24_f1jbl"]
+[ext_resource type="Script" uid="uid://cop4fluj08bgr" path="res://menu_controller.gd" id="33_xex6t"]
+[ext_resource type="PackedScene" uid="uid://34aecbmqi5st" path="res://ui/pause_menu.tscn" id="34_aa0lp"]
 
 [sub_resource type="Resource" id="Resource_36jdj"]
 script = ExtResource("9_5b14r")
@@ -187,6 +189,20 @@ tile_map_data = PackedByteArray("AAAMAAUAAAAAAAAAAAANAAUAAAAAAAAAAAANAAYAAAAAAAA
 [node name="EndMenu" parent="CanvasLayer" unique_id=1835711575 instance=ExtResource("21_hb5m1")]
 unique_name_in_owner = true
 visible = false
+
+[node name="MenuController" type="Control" parent="CanvasLayer" unique_id=1754038322]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("33_xex6t")
+
+[node name="PauseMenu" parent="CanvasLayer/MenuController" unique_id=1024911158 instance=ExtResource("34_aa0lp")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
 
 [node name="BgMusic" type="AudioStreamPlayer" parent="." unique_id=200408360]
 stream = ExtResource("24_f1jbl")

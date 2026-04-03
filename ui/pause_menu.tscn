@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://34aecbmqi5st"]
+
+[ext_resource type="Theme" uid="uid://bc8bxypbll4le" path="res://ui/end_theme.tres" id="1_50142"]
+[ext_resource type="Shader" uid="uid://bsf1a25jxwlv1" path="res://common/shaders/blur_and_tint.gdshader" id="1_ejwgg"]
+[ext_resource type="Script" uid="uid://m2cxxo5556pr" path="res://ui/pause_menu.gd" id="1_fob5h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fob5h"]
+shader = ExtResource("1_ejwgg")
+shader_parameter/blur_amount = 0.0
+shader_parameter/tint = Color(0, 0, 0, 1)
+shader_parameter/tint_strength = 0.0
+shader_parameter/saturation = 1.0
+
+[node name="PauseMenu" type="Control" unique_id=1024911158]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fob5h")
+
+[node name="BackgroundRect" type="ColorRect" parent="." unique_id=743643350]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_fob5h")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1517774332]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -292.0
+offset_top = -196.0
+offset_right = 292.0
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_50142")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=435179456]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="MenuTitle" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1050312]
+layout_mode = 2
+theme = ExtResource("1_50142")
+text = "Pause"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer" unique_id=1585641311]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/CenterContainer" unique_id=993060881]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ResumeButton" type="Button" parent="PanelContainer/VBoxContainer/CenterContainer/VBoxContainer" unique_id=2038901095]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_50142")
+text = "Continue"
+
+[node name="SettingsButton" type="Button" parent="PanelContainer/VBoxContainer/CenterContainer/VBoxContainer" unique_id=914228470]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_50142")
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="PanelContainer/VBoxContainer/CenterContainer/VBoxContainer" unique_id=955193539]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit"

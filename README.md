@@ -1,5 +1,8 @@
 # TO-DO:
 
+- [ ] Create Pause menu
+- [ ] Create Settings menu
+
 ## Dialogue
 ### P0 fixes/features
 - [ ] Allow clicking next once to show all dialogue (instead of animating it)

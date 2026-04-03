@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://ccihpnn8wfkdo"]
+
+[ext_resource type="Script" uid="uid://cop4fluj08bgr" path="res://menu_controller.gd" id="1_832if"]
+[ext_resource type="PackedScene" uid="uid://34aecbmqi5st" path="res://ui/pause_menu.tscn" id="2_oj4ki"]
+
+[node name="MenuCanvasLayer" type="CanvasLayer" unique_id=468263207]
+
+[node name="MenuController" type="Control" parent="." unique_id=800864515]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_832if")
+
+[node name="PauseMenu" parent="MenuController" unique_id=1024911158 instance=ExtResource("2_oj4ki")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
