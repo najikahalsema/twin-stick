@@ -15,6 +15,7 @@ func _ready() -> void:
 	next_button.pressed.connect(advance)
 
 func show_text() -> void:
+	next_button.grab_focus()
 	var current_item := dialogue_items[current_item_index]
 	rich_text_label.text = current_item.text
 	expression.texture = current_item.expression
