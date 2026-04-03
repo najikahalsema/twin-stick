@@ -23,29 +23,18 @@ metadata/_custom_type_script = "uid://8m4p5ucgmg34"
 [sub_resource type="Resource" id="Resource_ocili"]
 script = ExtResource("4_a1oy0")
 expression = ExtResource("9_wuxkc")
-text = "Me? Not much; thanks for asking. "
-metadata/_custom_type_script = "uid://8m4p5ucgmg34"
-
-[sub_resource type="Resource" id="Resource_w2fy3"]
-script = ExtResource("4_a1oy0")
-text = "Just chilling here in this dungeon... as one does..."
+text = "Hopefully, the heads of your enemies, am I right?"
 metadata/_custom_type_script = "uid://8m4p5ucgmg34"
 
 [sub_resource type="Resource" id="Resource_phifv"]
 script = ExtResource("4_a1oy0")
-text = "Anyway, I have some items in that chest over there if you want to try a new weapon."
+text = "The item next to me switches out your weapon for a little while."
 metadata/_custom_type_script = "uid://8m4p5ucgmg34"
 
 [sub_resource type="Resource" id="Resource_m62cl"]
 script = ExtResource("4_a1oy0")
 expression = ExtResource("9_phifv")
-text = "[i]I'm[/i] certainly not liable if there are any unforeseen consequences..."
-metadata/_custom_type_script = "uid://8m4p5ucgmg34"
-
-[sub_resource type="Resource" id="Resource_wuxkc"]
-script = ExtResource("4_a1oy0")
-expression = ExtResource("9_wuxkc")
-text = "[wave]Have fun![/wave]"
+text = "Why not give it a try?"
 metadata/_custom_type_script = "uid://8m4p5ucgmg34"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ml2qy"]
@@ -72,7 +61,7 @@ debug_color = Color(0, 0.8901961, 0.16470589, 0.41960785)
 [node name="DialogueBox" parent="CanvasLayer" unique_id=1178821251 instance=ExtResource("3_2mgmk")]
 unique_name_in_owner = true
 visible = false
-dialogue_items = Array[ExtResource("4_a1oy0")]([SubResource("Resource_x1gg0"), SubResource("Resource_ocili"), SubResource("Resource_w2fy3"), SubResource("Resource_phifv"), SubResource("Resource_m62cl"), SubResource("Resource_wuxkc")])
+dialogue_items = Array[ExtResource("4_a1oy0")]([SubResource("Resource_x1gg0"), SubResource("Resource_ocili"), SubResource("Resource_phifv"), SubResource("Resource_m62cl")])
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1858254352]
 collision_layer = 2

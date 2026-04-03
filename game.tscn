@@ -59,7 +59,7 @@ script = ExtResource("1_hve3p")
 
 [node name="Player" parent="." unique_id=2080458370 instance=ExtResource("2_mfdv2")]
 y_sort_enabled = false
-position = Vector2(344, 998)
+position = Vector2(568, 2800)
 
 [node name="RoomD" parent="." unique_id=2047460824 instance=ExtResource("3_7knny")]
 position = Vector2(0, 1984)
