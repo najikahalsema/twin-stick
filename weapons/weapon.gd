@@ -2,7 +2,6 @@ class_name Weapon extends Node2D
 
 ## The type of bullet the weapon fires.
 @export var bullet_scene: PackedScene = preload("uid://d1cm7qj3w5xtl")
-
 @export var shoot_sound: AudioStreamPlayer2D = null 
 
 @export_range(100.0, 3000.0, 1.0) var max_bullet_speed := 1500.0

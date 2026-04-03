@@ -39,9 +39,6 @@ func _ready() -> void:
 	health_bar.max_value = max_health
 	health_bar.value = health
 	
-	weapon_anchor.add_child(base_weapon)
-	equipped_weapon = base_weapon
-	
 	_weapon_timer = Timer.new()
 	_weapon_timer.one_shot = true
 	_weapon_timer.wait_time = 5.0
@@ -71,12 +68,10 @@ func change_weapon(weapon_scene: PackedScene, hand_texture: Texture) -> void:
 		
 		equipped_weapon = weapon_scene.instantiate()
 		weapon_anchor.add_child(equipped_weapon)
-		print(weapon_anchor.get_children())
 		
 		hand_left.texture = hand_texture
 		hand_right.texture = hand_texture
 		
-		# Commenting out for now because the reset_weapon code doesn't do what i want
 		_weapon_timer.stop()
 		_weapon_timer.start()
 
@@ -106,5 +101,10 @@ func toggle_player_control(is_active: bool) -> void:
 	set_physics_process(is_active)
 	_avatar.set_physics_process(is_active)
 	_weapon_pivot.set_process(is_active)
-	print(equipped_weapon, base_weapon_scene.get_state().get_node_name)
-	
+
+	# Stop the goddamn weapon from shooting when you should not be doing that!
+	var weapon := weapon_anchor.get_children().filter(
+		func(c): return c is Weapon
+	).front() as Weapon
+	if weapon != null:
+		weapon.set_physics_process(is_active)

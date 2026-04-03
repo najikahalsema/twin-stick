@@ -2,10 +2,10 @@ extends Weapon
 
 @export var base_damage := 2
 var charge_time := 0.0
+
 @onready var _gpu_particles_2d: GPUParticles2D = %GPUParticles2D
 @onready var _animation_player: AnimationPlayer = %AnimationPlayer
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	bullet_scene = preload("uid://6mtedr4ilexb")
 	shoot_sound = %ShootSound
